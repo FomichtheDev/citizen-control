@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   links: {
     width: "20%",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     fontWeight: "bold",
   },
 });
@@ -34,8 +34,8 @@ function Header({ isAuth }) {
       <div className={classes.links}>
         {/* {isAuth && <Link to="/places">Your places</Link>} */}
         {isAuth && <Link to="/logout">Log out</Link>}
-        {!isAuth && <Link to="/signin">Sign in</Link>}
-        {!isAuth && <Link to="/signup">Sign up</Link>}
+        {/* {!isAuth && <Link to="/signin">Sign in</Link>}
+        {!isAuth && <Link to="/signup">Sign up</Link>} */}
       </div>
     </div>
   );
