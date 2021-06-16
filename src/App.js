@@ -8,8 +8,10 @@ import Logout from "./components/Logout";
 import PublicPlaces from "./components/PublicPlaces/PublicPlaces";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(!!localStorage.getItem("userId"));
+  console.log("isAuth", isAuth);
   const [userId, setUserId] = useState("");
+  // const isUserAuth = localStorage.getItem('userId')
   return (
     <div className="App">
       <Header isAuth={isAuth} />

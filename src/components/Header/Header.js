@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     fontSize: "32px",
   },
   links: {
-    width: "15%",
+    width: "20%",
     display: "flex",
     justifyContent: "space-between",
     fontWeight: "bold",
@@ -26,12 +26,13 @@ const useStyles = makeStyles({
 });
 
 function Header({ isAuth }) {
+  console.log("isAuth", isAuth);
   const classes = useStyles();
   return (
     <div className={classes.header}>
       <div className={classes.logo}>Citizen-control</div>
       <div className={classes.links}>
-        {isAuth && <Link to="/places">Your places</Link>}
+        {/* {isAuth && <Link to="/places">Your places</Link>} */}
         {isAuth && <Link to="/logout">Log out</Link>}
         {!isAuth && <Link to="/signin">Sign in</Link>}
         {!isAuth && <Link to="/signup">Sign up</Link>}
