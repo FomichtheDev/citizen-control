@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
+import AuthErrorAlert from "./AuthErrorAlert/AuthErrorAlert.js";
 
 function Copyright() {
   return (
@@ -65,6 +66,10 @@ export default function SignInSide({ setIsAuth, setUserId }) {
   const history = useHistory();
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const disableHandler = () => {
+    return userName.length < 4 || password.length < 4 ? true : false;
+  };
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -82,9 +87,15 @@ export default function SignInSide({ setIsAuth, setUserId }) {
       });
       const json = await result.json();
       setUserId(json.id);
-      console.log(json);
-      setIsAuth(true);
-      history.push("/places");
+      if (json.id) {
+        setIsAuth(true);
+        history.push("/places");
+        setIsValid(true);
+      } else {
+        setIsValid(false);
+        setUsername("");
+        setPassword("");
+      }
     } catch (e) {
       console.error(e);
     }
@@ -96,6 +107,7 @@ export default function SignInSide({ setIsAuth, setUserId }) {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
+          {!isValid ? <AuthErrorAlert /> : null}
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
@@ -136,6 +148,7 @@ export default function SignInSide({ setIsAuth, setUserId }) {
             <Button
               type="submit"
               fullWidth
+              disabled={disableHandler()}
               variant="contained"
               color="primary"
               className={classes.submit}
