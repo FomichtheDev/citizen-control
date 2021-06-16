@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router";
 
 function Copyright() {
   return (
@@ -45,11 +46,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp({ setIsAuth, setUserId }) {
   const classes = useStyles();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const history = useHistory();
 
   const regex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
   console.log(regex.test(email));
@@ -73,6 +75,16 @@ export default function SignUp() {
       },
       body: JSON.stringify(body),
     });
+    const json = await result.json();
+    setUserId(json.id);
+    if (json.id) {
+      setIsAuth(true);
+      history.push("/places");
+    } else {
+      setEmail("");
+      setName("");
+      setPass("");
+    }
     console.log(result);
   };
 

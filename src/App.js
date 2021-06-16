@@ -27,7 +27,7 @@ function App() {
               <SignIn setIsAuth={setIsAuth} setUserId={setUserId} />
             </Route>
             <Route path="/signup">
-              <SignUp />
+              <SignUp setIsAuth={setIsAuth} setUserId={setUserId} />
             </Route>
           </div>
         )}

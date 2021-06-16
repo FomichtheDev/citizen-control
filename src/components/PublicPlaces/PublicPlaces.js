@@ -5,11 +5,12 @@ import Modal from "@material-ui/core/Modal";
 import AddPlace from "./AddPlace";
 
 const PublicPlaces = ({ userId }) => {
+  console.log("userId", userId);
   const [places, setPlaces] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const getPlaces = async () => {
     const body = {
-      authorId: userId,
+      authorId: localStorage.getItem("userId"),
     };
     const response = await fetch("http://localhost:5000/place/getplaces", {
       method: "POST",

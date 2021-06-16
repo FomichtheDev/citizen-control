@@ -62,8 +62,8 @@ const AddPlace = ({ authorId, refetchPlaces, setIsOpen }) => {
     setLocation("");
     setDescription("");
     setImg("");
-    refetchPlaces();
     setIsOpen(false);
+    refetchPlaces();
   };
 
   return (

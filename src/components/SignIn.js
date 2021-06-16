@@ -87,6 +87,7 @@ export default function SignInSide({ setIsAuth, setUserId }) {
       });
       const json = await result.json();
       setUserId(json.id);
+      localStorage.setItem("userId", json.id);
       if (json.id) {
         setIsAuth(true);
         history.push("/places");
