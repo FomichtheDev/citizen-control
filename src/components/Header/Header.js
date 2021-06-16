@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     fontSize: "32px",
   },
   links: {
-    width: "10%",
+    width: "15%",
     display: "flex",
     justifyContent: "space-between",
     fontWeight: "bold",
