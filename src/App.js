@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn";
 import Logout from "./components/Logout";
 import PublicPlaces from "./components/PublicPlaces/PublicPlaces";
 import MainPage from "./components/MainPage/MainPage";
+import PlacePage from "./components/PlacePage/PlacePage";
 
 function App() {
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem("userId"));
@@ -32,11 +33,14 @@ function App() {
             <Route path="/signup">
               <SignUp setIsAuth={setIsAuth} setUserId={setUserId} />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <MainPage />
             </Route>
           </div>
         )}
+        <Route path="/placeInfo">
+          <PlacePage />
+        </Route>
       </Switch>
     </div>
   );
