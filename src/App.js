@@ -6,15 +6,16 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Logout from "./components/Logout";
 import PublicPlaces from "./components/PublicPlaces/PublicPlaces";
+import MainPage from "./components/MainPage/MainPage";
 
 function App() {
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem("userId"));
   console.log("isAuth", isAuth);
   const [userId, setUserId] = useState("");
-  // const isUserAuth = localStorage.getItem('userId')
   return (
     <div className="App">
       <Header isAuth={isAuth} />
+
       <Switch>
         <Route path="/places">
           <PublicPlaces userId={userId} />
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp setIsAuth={setIsAuth} setUserId={setUserId} />
+            </Route>
+            <Route path="/">
+              <MainPage />
             </Route>
           </div>
         )}

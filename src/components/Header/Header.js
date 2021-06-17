@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     color: "white",
     padding: "0 20px",
     boxSizing: "border-box",
+    marginBottom: "10%",
   },
   logo: {
     fontSize: "32px",
@@ -34,8 +35,8 @@ function Header({ isAuth }) {
       <div className={classes.links}>
         {/* {isAuth && <Link to="/places">Your places</Link>} */}
         {isAuth && <Link to="/logout">Log out</Link>}
-        {/* {!isAuth && <Link to="/signin">Sign in</Link>}
-        {!isAuth && <Link to="/signup">Sign up</Link>} */}
+        {!isAuth && <Link to="/signin">Sign in</Link>}
+        {!isAuth && <Link to="/signup">Sign up</Link>}
       </div>
     </div>
   );
