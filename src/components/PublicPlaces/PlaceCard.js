@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PlaceCard({ name, description, location, img }) {
+export default function PlaceCard({ name, description, location, img, id }) {
   const classes = useStyles();
 
   return (
@@ -49,7 +49,7 @@ export default function PlaceCard({ name, description, location, img }) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <NavLink style={{ color: "#000" }} to="/placeInfo">
+          <NavLink style={{ color: "#000" }} to={`/placeInfo/${id}`}>
             Learn More
           </NavLink>
         </Button>

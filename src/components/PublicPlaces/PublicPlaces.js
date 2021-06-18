@@ -58,12 +58,14 @@ const PublicPlaces = ({ userId }) => {
       >
         {places.length > 0 &&
           places.map((place) => {
+            console.log("place", place);
             return (
               <PlaceCard
                 name={place.name}
                 description={place.description}
                 location={place.location}
                 img={place.img}
+                id={place._id}
               />
             );
           })}
