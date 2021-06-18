@@ -19,6 +19,8 @@ const PlacePage = () => {
   const [editedAddress, setEditedAddress] = useState("");
   const [editedImage, setEditedImage] = useState("");
   const [editedDescription, setEditedDescription] = useState("");
+  const [comments, setComments] = useState([]);
+  console.log(comments);
 
   const handleName = (e) => {
     setEditedName(e.target.value);
@@ -79,8 +81,27 @@ const PlacePage = () => {
       const json = await response.json();
       setPlace(json);
     };
+    const getComments = async () => {
+      const body = {
+        placeId: id,
+      };
+      const response = await fetch(
+        "http://localhost:5000/comment/getcomments",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      const json = await response.json();
+
+      setComments(json);
+    };
 
     getPlace();
+    getComments();
   }, [open]);
 
   const { description, img, location, name } = place[0];
@@ -222,15 +243,12 @@ const PlacePage = () => {
             alignItems: "flex-end",
           }}
         >
-          <CommentCard
-            text="lorem aasdfsdf brfgbdb sv et eg er ger fddfgwe b fgvsgvwegewg sg sf s."
-            author="Anton Shapoval"
-          />
-          <CommentCard
-            text="lorem aasdfsdf brfgbdb sv et eg er ger fddfgwe b fgvsgvwegewg sg sf s."
-            author="Anton Shapoval"
-            isNegative
-          />
+          {comments.map((comment) => {
+            return (
+              <CommentCard text={comment.content} author={comment.authorId} />
+            );
+          })}
+
           <Button
             style={{ height: "40px" }}
             variant="contained"
