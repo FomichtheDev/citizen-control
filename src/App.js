@@ -11,7 +11,6 @@ import PlacePage from "./components/PlacePage/PlacePage";
 
 function App() {
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem("userId"));
-  console.log("isAuth", isAuth);
   const [userId, setUserId] = useState("");
   return (
     <div className="App">
