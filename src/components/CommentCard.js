@@ -33,7 +33,7 @@ export default function CommentCard({ text, author, isNegative }) {
           color="textSecondary"
           gutterBottom
         >
-          {author}
+          {"User id: " + author}
         </Typography>
         <Typography
           style={{ maxWidth: "300px", margin: "0 auto" }}

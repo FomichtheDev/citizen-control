@@ -20,6 +20,7 @@ const PlacePage = () => {
   const [editedImage, setEditedImage] = useState("");
   const [editedDescription, setEditedDescription] = useState("");
   const [comments, setComments] = useState([]);
+
   console.log(comments);
 
   const handleName = (e) => {
@@ -99,6 +100,8 @@ const PlacePage = () => {
 
       setComments(json);
     };
+
+    
 
     getPlace();
     getComments();
